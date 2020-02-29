@@ -1,0 +1,154 @@
+basePath: /
+definitions:
+  dto.CreateTestRequest:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  dto.PutTestRequest:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    required:
+    - id
+    - name
+    type: object
+info:
+  contact: {}
+  license: {}
+  title: 后台
+  version: latest
+paths:
+  /lt/api/v1:
+    get:
+      description: 获取平台版本
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 获取平台版本
+      tags:
+      - 获取平台版本
+  /lt/api/v1/test:
+    post:
+      consumes:
+      - application/json
+      description: 创建test
+      parameters:
+      - description: test信息
+        in: body
+        name: CreateTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 创建test
+      tags:
+      - test
+    put:
+      consumes:
+      - application/json
+      description: 更改test
+      parameters:
+      - description: test信息
+        in: body
+        name: PutTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutTestRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 更改test
+      tags:
+      - test
+  /lt/api/v1/test/{roomId}:
+    get:
+      consumes:
+      - application/json
+      description: 根据ID获取test
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 根据ID获取test
+      tags:
+      - test
+  /lt/api/v1/test{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 删除test
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 删除test
+      tags:
+      - test
+swagger: "2.0"
