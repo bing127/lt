@@ -1,4 +1,4 @@
-import 'package:app/common/utils/AndroidBackTop.dart';
+import 'package:app/app/double_tap_back_exit_app.dart';
 import 'package:app/pages/find/page/find_page.dart';
 import 'package:app/pages/home/page/home_page.dart';
 import 'package:app/pages/my/page/my_page.dart';
@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> {
   /*
   * 处理tabTar图片
   */
-  Image getTabImage(String path, {double w = 24.0, double h = 24.0}) {
+  Image getTabImage(String path, {double w = 22.0, double h = 22.0}) {
     var url = "assets/icon/$path.png";
     return Image.asset(url, width: w, height: h);
   }
@@ -67,24 +67,17 @@ class _MainPageState extends State<MainPage> {
     return Badge(
       elevation: 0,
       showBadge: int.parse(count) >= 1 ? true : false,
-      padding: EdgeInsets.all(isDot
-          ? ScreenUtil().setWidth(10)
-          : (int.parse(count) > 9
-          ? ScreenUtil().setWidth(4)
-          : ScreenUtil().setWidth(13))),
+      padding: EdgeInsets.all(isDot ? ScreenUtil().setWidth(10) : (int.parse(count) > 9 ? ScreenUtil().setWidth(4) : ScreenUtil().setWidth(13))),
       position: BadgePosition(
-          top: isDot
-              ? -ScreenUtil().setHeight(4)
-              : (-ScreenUtil().setHeight(int.parse(count) > 9 ? 6 : 15)),
-          right:
-          -(isDot ? ScreenUtil().setWidth(3) : ScreenUtil().setWidth(13))),
+          top: isDot ? -ScreenUtil().setHeight(4) : (-ScreenUtil().setHeight(int.parse(count) > 9 ? 6 : 15)),
+          right: -(isDot ? ScreenUtil().setWidth(3) : ScreenUtil().setWidth(13))
+      ),
       toAnimate: false,
       badgeContent: !isDot
           ? Text(
         "$count",
         style: TextStyle(color: const Color(0xffffffff), fontSize: 12),
-      )
-          : SizedBox(),
+      ) : SizedBox.shrink(),
       child: child,
     );
   }
@@ -92,11 +85,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-    return WillPopScope(
-      onWillPop: () async {
-        AndroidBackTop.backDeskTop();
-        return false;
-      },
+    return DoubleTapBackExitApp(
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
@@ -128,8 +117,8 @@ class _MainPageState extends State<MainPage> {
           elevation: 3.0,
           selectedFontSize: 12.0,
           unselectedFontSize: 12.0,
-          selectedItemColor: Color(0xff0F82FF),
-          unselectedItemColor: Color(0xff666666),
+          selectedItemColor: Color(0xff262626),
+          unselectedItemColor: Color(0xffA8A8A8),
           onTap: (index) {
             _pageController.jumpToPage(index);
           },

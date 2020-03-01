@@ -27,6 +27,7 @@ class _WebViewPageState extends State<WebViewPage> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
 //    print("链接：${  widget.url }");
     return FutureBuilder<WebViewController>(
         future: _controller.future,
@@ -48,7 +49,7 @@ class _WebViewPageState extends State<WebViewPage> {
                 appBar: AppBar(
                   leading: IconButton(
                     icon: Icon(
-                      IconFont.ri_arrow_left_circle_line,
+                      IconFont.icon_arrow_lift,
                       color: Colors.black,
                       size: ScreenUtil().setSp(36),
                     ),

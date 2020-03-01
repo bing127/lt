@@ -13,14 +13,14 @@ void main() async {
   /// 配置初始化
   await SpUtil.getInstance();
 
-  /// APP入口并配置Provider
-  runApp(RootPage());
-
   /// 自定义报错页面
   ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails){
     print(flutterErrorDetails.toString());
     return ExceptionPage();
   };
+
+  /// APP入口
+  runApp(RootPage());
 
   // 沉浸式状态栏
   if (Platform.isAndroid) {

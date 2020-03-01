@@ -1,5 +1,6 @@
 import 'package:app/app/main_page.dart';
 import 'package:app/app/webview_page.dart';
+import 'package:app/app/welcome_page.dart';
 import 'package:app/routers/404.dart';
 import 'package:app/routers/router_init.dart';
 import 'package:fluro/fluro.dart';
@@ -41,7 +42,7 @@ class Routes {
     }));
 
 
-//    router.define(welcomePage, handler: Handler(handlerFunc: (_, params)=> WelcomePage()));
+    router.define(welcomePage, handler: Handler(handlerFunc: (_, params)=> WelcomePage()));
 
     _listRouter.clear();
     /// 各自路由由各自模块管理，统一在此添加初始化
