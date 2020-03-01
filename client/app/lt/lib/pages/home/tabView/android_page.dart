@@ -6,9 +6,10 @@ class AndroidPage extends StatefulWidget {
   _AndroidPageState createState() => _AndroidPageState();
 }
 
-class _AndroidPageState extends State<AndroidPage> {
+class _AndroidPageState extends State<AndroidPage>  with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -54,4 +55,8 @@ class _AndroidPageState extends State<AndroidPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

@@ -6,9 +6,10 @@ class BackEndPage extends StatefulWidget {
   _BackEndPageState createState() => _BackEndPageState();
 }
 
-class _BackEndPageState extends State<BackEndPage> {
+class _BackEndPageState extends State<BackEndPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -54,4 +55,8 @@ class _BackEndPageState extends State<BackEndPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

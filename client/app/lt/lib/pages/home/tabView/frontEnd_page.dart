@@ -6,9 +6,10 @@ class FrontEndPage extends StatefulWidget {
   _FrontEndPageState createState() => _FrontEndPageState();
 }
 
-class _FrontEndPageState extends State<FrontEndPage> {
+class _FrontEndPageState extends State<FrontEndPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -54,4 +55,8 @@ class _FrontEndPageState extends State<FrontEndPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

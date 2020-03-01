@@ -6,9 +6,10 @@ class IosPage extends StatefulWidget {
   _IosPageState createState() => _IosPageState();
 }
 
-class _IosPageState extends State<IosPage> {
+class _IosPageState extends State<IosPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -54,4 +55,8 @@ class _IosPageState extends State<IosPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

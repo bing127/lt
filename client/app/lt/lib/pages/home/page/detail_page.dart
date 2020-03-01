@@ -540,7 +540,7 @@ class _DetailPageState extends State<DetailPage> {
         left: ScreenUtil().setWidth(10)
       ),
       child: Text(
-        "LV1",
+        "$title",
         style: TextStyle(
           fontSize: ScreenUtil().setSp(23)
         ),

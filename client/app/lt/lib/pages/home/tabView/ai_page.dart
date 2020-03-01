@@ -6,9 +6,10 @@ class AIPage extends StatefulWidget {
   _AIPageState createState() => _AIPageState();
 }
 
-class _AIPageState extends State<AIPage> {
+class _AIPageState extends State<AIPage> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -54,4 +55,8 @@ class _AIPageState extends State<AIPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

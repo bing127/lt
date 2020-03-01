@@ -9,9 +9,10 @@ class RecommendPage extends StatefulWidget {
   _RecommendPageState createState() => _RecommendPageState();
 }
 
-class _RecommendPageState extends State<RecommendPage> {
+class _RecommendPageState extends State<RecommendPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -84,4 +85,8 @@ class _RecommendPageState extends State<RecommendPage> {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

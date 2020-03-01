@@ -1,6 +1,5 @@
 import 'package:app/pages/home/home_router.dart';
 import 'package:app/routers/fluro_navigator.dart';
-import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -213,7 +212,7 @@ class CustomItem extends StatelessWidget {
           ),
         ),
         onTap: (){
-          NavigatorUtils.push(context, HomeRouter.detailPage,transition: TransitionType.inFromRight);
+          NavigatorUtils.push(context, HomeRouter.detailPage);
         },
       ),
     );
