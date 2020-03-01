@@ -57,8 +57,9 @@ class _DetailPageState extends State<DetailPage> {
                 "前后端分离全栈项目的开发与部署流程前后端分离全栈项目的开发与部署流程",
                 style: TextStyle(
                     color: Color(0xff262626),
-                    fontSize: ScreenUtil().setSp(36),
-                    height: ScreenUtil().setHeight(2.5)
+                    fontSize: ScreenUtil().setSp(32),
+                    height: ScreenUtil().setHeight(2.5),
+                    fontWeight: FontWeight.w700
                 ),
               ),
               margin: EdgeInsets.only(
@@ -283,7 +284,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget _commentView(){
     return Container(
       padding: EdgeInsets.only(
-          top: ScreenUtil().setHeight(20)
+          top: ScreenUtil().setHeight(20),
       ),
       color: Color(0xffF4F6FA),
       child: Container(
@@ -291,6 +292,7 @@ class _DetailPageState extends State<DetailPage> {
         padding: EdgeInsets.only(
           left: ScreenUtil().setWidth(30),
           right: ScreenUtil().setWidth(30),
+          bottom: ScreenUtil().setHeight(120)
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -325,7 +327,9 @@ class _DetailPageState extends State<DetailPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  _commentItem()
+                  _commentItem(),
+                  _commentItem(),
+                  _commentItem(),
                 ],
               ),
             )
@@ -356,12 +360,64 @@ class _DetailPageState extends State<DetailPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  "不在乎的在乎",
-                  style: TextStyle(
-                    color: Color(0xff878787),
-                    fontSize: ScreenUtil().setSp(28)
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "不在乎的在乎",
+                              style: TextStyle(
+                                  color: Color(0xff39586C),
+                                  fontSize: ScreenUtil().setSp(30)
+                              ),
+                            ),
+                            _grade('LV1'),
+                          ],
+                        ),
+                        SizedBox(
+                          height: ScreenUtil().setHeight(15),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "全干工程师",
+                              style: TextStyle(
+                                  color: Color(0xff9EA3A7),
+                                  fontSize: ScreenUtil().setSp(28)
+                              ),
+                            ),
+                            Text(
+                              " · ",
+                              style: TextStyle(
+                                  color: Color(0xff9EA3A7)
+                              ),
+                            ),
+                            Text(
+                              "1小时前",
+                              style: TextStyle(
+                                  color: Color(0xff9EA3A7),
+                                  fontSize: ScreenUtil().setSp(28)
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    IconButton(
+                      icon: Icon(
+                          IconFont.icon_like,
+                          color: Color(0xff909497),
+                          size: ScreenUtil().setSp(50),
+                      ),
+                      onPressed: (){},
+                    )
+                  ],
                 ),
                 SizedBox(
                   height: ScreenUtil().setHeight(20),
@@ -372,11 +428,132 @@ class _DetailPageState extends State<DetailPage> {
                     color: Color(0xff292929),
                     fontSize: ScreenUtil().setSp(28)
                   ),
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(
+                    top: ScreenUtil().setHeight(20)
+                  ),
+                  padding: EdgeInsets.only(
+                    bottom: ScreenUtil().setHeight(20),
+                    left: ScreenUtil().setWidth(20),
+                    right: ScreenUtil().setWidth(20)
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: ScreenUtil().setHeight(20)
+                        ),
+                        child: RichText(
+                          text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                                text: "jsliushen",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff232726)
+                                )
+                            ),
+                            TextSpan(
+                                text: "(作者)：",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff232726)
+                                )
+                            ),
+                            TextSpan(
+                                text: "文章里就有呀，一看就没仔细读",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff757575),
+                                    height: ScreenUtil().setHeight(2.5)
+                                )
+                            ),
+                          ]),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: ScreenUtil().setHeight(20)
+                        ),
+                        child: RichText(
+                          text: TextSpan(children: <TextSpan>[
+                            TextSpan(
+                                text: "Serendipity君",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff232726)
+                                )
+                            ),
+                            TextSpan(
+                                text: " 回复 ",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff757575)
+                                )
+                            ),
+                            TextSpan(
+                                text: "jsliushen",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff232726)
+                                )
+                            ),
+                            TextSpan(
+                                text: "(作者)：",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff232726)
+                                )
+                            ),
+                            TextSpan(
+                                text: "一楼留给自己... 大家有问题欢迎留言讨论",
+                                style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(29),
+                                    color: Color(0xff757575),
+                                    height: ScreenUtil().setHeight(2.5)
+                                )
+                            ),
+                          ]),
+                        ),
+                      )
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xffF4F8F7),
+                      borderRadius: BorderRadius.circular(ScreenUtil().setWidth(3))
+                  ),
                 )
               ],
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _grade(String title){
+    return Container(
+      margin: EdgeInsets.only(
+        left: ScreenUtil().setWidth(10)
+      ),
+      child: Text(
+        "LV1",
+        style: TextStyle(
+          fontSize: ScreenUtil().setSp(23)
+        ),
+      ),
+      padding: EdgeInsets.only(
+        left: ScreenUtil().setWidth(8),
+        right: ScreenUtil().setWidth(8),
+        top: ScreenUtil().setWidth(2),
+        bottom: ScreenUtil().setWidth(2)
+      ),
+      decoration: BoxDecoration(
+        color: Color(0xff8FD8EE),
+        borderRadius: BorderRadius.circular(ScreenUtil().setWidth(3))
       ),
     );
   }

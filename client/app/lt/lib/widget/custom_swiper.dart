@@ -22,6 +22,7 @@ class CustomSwiper extends StatelessWidget {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Container(
       height: height,
+      width: double.infinity,
       child: new Swiper(
         autoplay: true,
         curve: Curves.linear,
