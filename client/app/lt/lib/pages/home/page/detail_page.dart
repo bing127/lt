@@ -195,27 +195,26 @@ class _DetailPageState extends State<DetailPage> {
           /// 评论
           _btn(
               162,
-              IconFont.icon_comments
+              "ic_tab_comments_no_number_black"
           ),
-          /// 评论
           _btn(
             162,
-            IconFont.icon_like
+            "ic_tab_praise__black_normal"
           ),
           _btn(
               6,
-              IconFont.icon_star
+              "ic_tab_collection_light_normal"
           ),
           _btn(
               16,
-              IconFont.icon_share
+              "ic_toolbar_share_dark"
           )
         ],
       ),
     );
   }
 
-  Widget _btn(int total,IconData icon){
+  Widget _btn(int total,String icon){
     Widget child;
     double right = 0;
     if(total < 10){
@@ -266,10 +265,10 @@ class _DetailPageState extends State<DetailPage> {
           width: ScreenUtil().setWidth(100),
           height: double.infinity,
           alignment: Alignment.center,
-          child: Icon(
-            icon,
-            color: Colors.black,
-            size: ScreenUtil().setSp(55),
+          child: Image.asset(
+            "assets/icon/$icon.png",
+            width: ScreenUtil().setWidth(50),
+            height: ScreenUtil().setWidth(50),
           ),
         ),
         Positioned(
@@ -410,10 +409,10 @@ class _DetailPageState extends State<DetailPage> {
                       ],
                     ),
                     IconButton(
-                      icon: Icon(
-                          IconFont.icon_like,
-                          color: Color(0xff909497),
-                          size: ScreenUtil().setSp(50),
+                      icon: Image.asset(
+                        "assets/icon/ic_tab_praise__black_normal.png",
+                        width: ScreenUtil().setWidth(40),
+                        height: ScreenUtil().setWidth(40),
                       ),
                       onPressed: (){},
                     )

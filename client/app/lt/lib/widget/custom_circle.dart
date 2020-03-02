@@ -126,21 +126,21 @@ class CustomCircle extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           _itemFooter(
-                            IconFont.icon_comments,
+                            "ic_tab_comments_no_number_black",
                             23,
                             tap: (){
                               print("1");
                             }
                           ),
                           _itemFooter(
-                              IconFont.icon_like,
-                              0,
+                              "ic_tab_praise__black_normal",
+                              3,
                               tap: (){
                                 print("2");
                               }
                           ),
                           _itemFooter(
-                              IconFont.icon_share,
+                              "ic_toolbar_share_dark",
                               23,
                               tap: (){
                                 print("3");
@@ -195,17 +195,17 @@ class CustomCircle extends StatelessWidget {
     );
   }
 
-  Widget _itemFooter(IconData icon,int total,{Function tap}){
+  Widget _itemFooter(String icon,int total,{Function tap}){
     return Container(
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           child: Row(
             children: <Widget>[
-              Icon(
-                icon,
-                color: Color(0xffA8A8A8),
-                size: ScreenUtil().setSp(46),
+              Image.asset(
+                "assets/icon/$icon.png",
+                width: ScreenUtil().setWidth(40),
+                height: ScreenUtil().setWidth(40),
               ),
               SizedBox(
                 width: ScreenUtil().setWidth(10),
@@ -213,7 +213,7 @@ class CustomCircle extends StatelessWidget {
               total > 0 ? Text(
                 "$total",
                 style: TextStyle(
-                    color: Color(0xffA8A8A8),
+                    color: Color(0xff262626),
                     fontSize: ScreenUtil().setSp(28)
                 ),
               ) : SizedBox.shrink()

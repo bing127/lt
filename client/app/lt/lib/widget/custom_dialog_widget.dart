@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDialogWidget extends StatefulWidget {
 
-  final String title;
   final Widget child;
   final bool isMarkClose;
   final Color bgColor;
@@ -13,7 +12,6 @@ class CustomDialogWidget extends StatefulWidget {
 
   const CustomDialogWidget({
     Key key,
-    this.title,
     this.isMarkClose:true,
     this.child,
     this.bgColor:Colors.white,

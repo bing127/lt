@@ -1,3 +1,4 @@
+import 'package:app/common/icon.dart';
 import 'package:app/pages/home/tabView/FrontEnd_page.dart';
 import 'package:app/pages/home/tabView/ai_page.dart';
 import 'package:app/pages/home/tabView/android_page.dart';
@@ -5,7 +6,9 @@ import 'package:app/pages/home/tabView/backEnd_page.dart';
 import 'package:app/pages/home/tabView/follow_page.dart';
 import 'package:app/pages/home/tabView/ios_page.dart';
 import 'package:app/pages/home/tabView/recommend_page.dart';
+import 'package:app/routers/fluro_navigator.dart';
 import 'package:app/widget/custom_app_search.dart';
+import 'package:app/widget/custom_dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,9 +23,12 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   void initState() {
+    super.initState();
     _tabController = TabController(vsync: this, length: 7);
     _initData();
-    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _showAd();
+    });
   }
 
   void _initData(){
@@ -43,7 +49,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Scaffold(
       appBar: AppBar(
-        title: CustomAppSearch(),
+        title: CustomAppSearch(
+          func: (){
+            _showAd();
+          },
+        ),
         elevation: 0.0,
         centerTitle: true,
         bottom: TabBar(
@@ -78,6 +88,52 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       text: title,
     );
   }
+
+/// 广告显示
+  _showAd() async {
+    return await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) => CustomDialogWidget(
+          bgColor: Colors.transparent,
+          isMarkClose: true,
+          width: ScreenUtil().setWidth(550),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.only(
+                  bottom: ScreenUtil().setHeight(20)
+                ),
+                child: IconButton(
+                  icon: Icon(
+                    IconFont.icon_close,
+                    size: ScreenUtil().setSp(70),
+                  ),
+                  onPressed: (){
+                    NavigatorUtils.goBack(context);
+                  },
+                ),
+              ),
+              Container(
+                height: ScreenUtil().setHeight(730),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      "https://img.36krcdn.com/20200227/v2_67e8248fab2c40b8adb56081b39348b1_img_jpg",
+                    )
+                  )
+                ),
+              )
+            ],
+          ),
+        )
+    );
+  }
+
 
   @override
   // TODO: implement wantKeepAlive

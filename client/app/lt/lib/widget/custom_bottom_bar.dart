@@ -34,10 +34,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
     if (widget.currentIndex == 2) {
       isSelect = false;
     } else {
-      isSelect = (widget.currentIndex > 1
-          ? (widget.currentIndex - 1)
-          : widget.currentIndex) ==
-          index;
+      isSelect = (widget.currentIndex > 1 ? (widget.currentIndex - 1) : widget.currentIndex) == index;
     }
 
     rowContents.add(

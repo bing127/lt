@@ -1,5 +1,6 @@
 import 'package:app/pages/find/model/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sticky_headers/sticky_headers.dart';
@@ -96,7 +97,7 @@ class _FindPageState extends State<FindPage>
                     crossAxisCount: 3,
                     crossAxisSpacing: ScreenUtil().setWidth(20),
                     mainAxisSpacing: ScreenUtil().setWidth(20),
-                    childAspectRatio: ScreenUtil().setWidth(1.3)
+                    childAspectRatio: ScreenUtil().setWidth(1.35)
                 ),
                 children: <Widget>[
                   _bookChildItem(),
@@ -126,24 +127,48 @@ class _FindPageState extends State<FindPage>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                PhysicalModel(
-                  color: Colors.transparent,
-                  clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(ScreenUtil().setWidth(8)),
-                  child: CachedNetworkImage(
-                    imageUrl:
+                Stack(
+                  children: <Widget>[
+                    PhysicalModel(
+                      color: Colors.transparent,
+                      clipBehavior: Clip.antiAlias,
+                      borderRadius: BorderRadius.circular(ScreenUtil().setWidth(8)),
+                      child: CachedNetworkImage(
+                        imageUrl:
                         "https://static.bookstack.cn/projects/learn-go-by-example/uploads/201802/1511d21582eab2dd.jpg/cover",
-                    height: ScreenUtil().setHeight(220),
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
+                        height: ScreenUtil().setHeight(220),
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          right: ScreenUtil().setWidth(15),
+                          bottom: ScreenUtil().setWidth(10),
+                          top: ScreenUtil().setWidth(10)
+                        ),
+                        color: Color.fromRGBO(0,0,0,.6),
+                        child: Text(
+                            "点击量：26",
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(22)
+                            ),
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 Container(
                   child: Text(
                     "Go示例学(Go By Example 中文版)",
                     style: TextStyle(
                         color: Color(0xff333333),
-                        fontSize: ScreenUtil().setSp(28)),
+                        fontSize: ScreenUtil().setSp(25)),
                   ),
                 ),
               ],
