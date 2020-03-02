@@ -29,13 +29,13 @@ class RootPage extends StatelessWidget {
         theme: ThemeData(
           brightness: Brightness.dark,
           textTheme: TextTheme(
-              subhead: TextStyle(textBaseline: TextBaseline.alphabetic)
+              subhead: TextStyle(textBaseline: TextBaseline.alphabetic),
           ),
           primaryColor: Colors.white,
           dividerColor: Color(0xFFEEEEEE),
           scaffoldBackgroundColor: Color(0xffF4F6FA),
           fontFamily: "helveticaneuelight",
-          splashColor: Colors.transparent,
+          accentColor: Color(0xff4286F5)
         ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

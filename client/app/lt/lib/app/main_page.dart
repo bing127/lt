@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<String> _appBarTitles = ['首页', '发现', '龙潭圈', '我的'];
+  List<String> _appBarTitles = ['首页', '书籍', '龙潭圈', '我的'];
   int _tabIndex = 0;
   List<Widget> _pageList = [];
   var _tabImages = [];
@@ -103,6 +103,14 @@ class _MainPageState extends State<MainPage> {
               title: _buildTabText(1),
             ),
             BottomNavigationBarItem(
+              icon: Image.asset(
+                "assets/icon/bbo.webp",
+                width: ScreenUtil().setWidth(85),
+                height: ScreenUtil().setWidth(85),
+              ),
+              title: SizedBox.shrink()
+            ),
+            BottomNavigationBarItem(
               icon: _getTabIcon(2),
               title: _buildTabText(2),
             ),
@@ -119,13 +127,33 @@ class _MainPageState extends State<MainPage> {
           unselectedFontSize: 12.0,
           selectedItemColor: Color(0xff262626),
           unselectedItemColor: Color(0xffA8A8A8),
-          onTap: (index) {
-            _pageController.jumpToPage(index);
+          onTap: (int index) {
+            int pageIndex = 0;
+            switch(index){
+              case 0:
+                pageIndex = 0;
+                break;
+              case 1:
+                pageIndex = 1;
+                break;
+              case 2:
+                print("阿飞萨芬");
+                break;
+              case 3:
+                pageIndex = 2;
+                break;
+              case 4:
+                pageIndex = 3;
+                break;
+            }
+            _onPageChanged(pageIndex);
+            if(index !=2){
+              _pageController.jumpToPage(pageIndex);
+            }
           },
         ),
         body: PageView(
           controller: _pageController,
-          onPageChanged: _onPageChanged,
           children: _pageList,
           physics: NeverScrollableScrollPhysics(),
         ),
