@@ -229,6 +229,7 @@ class _MainPageState extends State<MainPage> {
   Widget _gridMenu(){
     return GridView(
       shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         childAspectRatio: ScreenUtil().setHeight(1.8),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppSearch extends StatelessWidget {
+
   final Function func;
   CustomAppSearch({Key key,this.func}):super(key:key);
 

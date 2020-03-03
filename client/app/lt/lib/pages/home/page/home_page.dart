@@ -122,8 +122,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                      "https://img.36krcdn.com/20200227/v2_67e8248fab2c40b8adb56081b39348b1_img_jpg",
+                    image: AssetImage(
+                      "assets/icon/ad.png",
                     )
                   )
                 ),

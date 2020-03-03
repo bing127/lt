@@ -1,6 +1,4 @@
-import 'package:app/common/icon.dart';
 import 'package:app/widget/custom_text_overflow.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
