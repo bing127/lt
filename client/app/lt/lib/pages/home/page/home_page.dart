@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 7);
+    _tabController = TabController(vsync: this, length: 9);
     _initData();
     WidgetsBinding.instance.addPostFrameCallback((_){
       _showAd();

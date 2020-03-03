@@ -10,10 +10,14 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+// 创建持久性BottomSheet
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
@@ -164,31 +168,38 @@ class _DetailPageState extends State<DetailPage> {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.only(
-                left: ScreenUtil().setWidth(20),
-                right: ScreenUtil().setWidth(10)
-              ),
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(
-                    left: ScreenUtil().setWidth(10),
-                    right: ScreenUtil().setWidth(10),
-                    top: ScreenUtil().setHeight(15),
-                    bottom: ScreenUtil().setHeight(15)
-                ),
-                child: Text(
-                  "有何高见，展开讲讲",
-                  style: TextStyle(
-                      color: Color(0xffB2B4B3)
+            child: Material(
+              child: InkWell(
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(
+                      left: ScreenUtil().setWidth(20),
+                      right: ScreenUtil().setWidth(10)
                   ),
-                  textAlign: TextAlign.center,
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(
+                        left: ScreenUtil().setWidth(10),
+                        right: ScreenUtil().setWidth(10),
+                        top: ScreenUtil().setHeight(15),
+                        bottom: ScreenUtil().setHeight(15)
+                    ),
+                    child: Text(
+                      "有何高见，展开讲讲",
+                      style: TextStyle(
+                          color: Color(0xffB2B4B3)
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(0xffF7F8FC),
+                        borderRadius: BorderRadius.circular(ScreenUtil().setWidth(5))
+                    ),
+                  ),
                 ),
-                decoration: BoxDecoration(
-                    color: Color(0xffF7F8FC),
-                    borderRadius: BorderRadius.circular(ScreenUtil().setWidth(5))
-                ),
+                onTap: (){
+
+                },
               ),
             ),
           ),
@@ -556,5 +567,6 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
+
 
 }

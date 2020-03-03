@@ -1,5 +1,6 @@
 import 'package:app/pages/home/home_router.dart';
 import 'package:app/routers/fluro_navigator.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -195,12 +196,14 @@ class CustomItem extends StatelessWidget {
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
                         clipBehavior: Clip.antiAlias,
-                        child: Image.network(
-                          thumbnail,
+                        child:CachedNetworkImage(
+                          imageUrl: "$thumbnail",
+                          placeholder: (context, url) => new CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => new Icon(Icons.error),
                           width: ScreenUtil().setWidth(200),
                           height: ScreenUtil().setWidth(200),
-                          fit: BoxFit.cover,
-                        )
+                          fit: BoxFit.fill,
+                        ),
                     ),
                     padding: EdgeInsets.only(
                         left: ScreenUtil().setWidth(30)
