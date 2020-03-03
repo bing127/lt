@@ -44,12 +44,12 @@ class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
                 "浏览记录"
             ),
             _cell(
-                IconFont.icon_credit_level_fill,
-                "我的收藏"
+                IconFont.icon_email_fill,
+                "意见反馈"
             ),
             _cell(
                 IconFont.icon_email_fill,
-                "意见反馈"
+                "专栏作者"
             ),
             _cell(
                 IconFont.icon_set1,

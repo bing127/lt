@@ -27,7 +27,6 @@ class RootPage extends StatelessWidget {
         onGenerateRoute: Application.router.generator,
         home: WelcomePage(),
         theme: ThemeData(
-          brightness: Brightness.dark,
           textTheme: TextTheme(
               subhead: TextStyle(textBaseline: TextBaseline.alphabetic),
           ),

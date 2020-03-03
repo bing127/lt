@@ -3,7 +3,9 @@ import 'package:app/pages/home/tabView/FrontEnd_page.dart';
 import 'package:app/pages/home/tabView/ai_page.dart';
 import 'package:app/pages/home/tabView/android_page.dart';
 import 'package:app/pages/home/tabView/backEnd_page.dart';
+import 'package:app/pages/home/tabView/column_page.dart';
 import 'package:app/pages/home/tabView/follow_page.dart';
+import 'package:app/pages/home/tabView/hot_page.dart';
 import 'package:app/pages/home/tabView/ios_page.dart';
 import 'package:app/pages/home/tabView/recommend_page.dart';
 import 'package:app/routers/fluro_navigator.dart';
@@ -35,6 +37,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     _pageList = <Widget>[
       FollowPage(),
       RecommendPage(),
+      ColumnPage(),
+      HotPage(),
       FrontEndPage(),
       BackEndPage(),
       AndroidPage(),
@@ -66,6 +70,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           tabs: <Widget>[
             _tabItem(title: "关注"),
             _tabItem(title: "推荐"),
+            _tabItem(title: "专栏"),
+            _tabItem(title: "热榜"),
             _tabItem(title: "前端"),
             _tabItem(title: "后端"),
             _tabItem(title: "Android"),
