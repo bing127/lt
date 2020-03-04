@@ -1,4 +1,6 @@
 import 'package:app/common/icon.dart';
+import 'package:app/common/utils/toast.dart';
+import 'package:app/pages/home/widget/bottom_input.dart';
 import 'package:app/routers/fluro_navigator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -581,66 +583,12 @@ class _DetailPageState extends State<DetailPage> {
           return StatefulBuilder(
             builder: (stateContext,state){
               return GestureDetector(
-                // 关键代码
                 onVerticalDragUpdate: (e)=>false,
-                child: Scaffold(
-                  backgroundColor: Colors.black.withOpacity(.3),
-                  body: Container(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Container(
-                            height: ScreenUtil().setHeight(90),
-                            color: Colors.white,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                FlatButton(
-                                  child: Text(
-                                    "取消",
-                                    style: TextStyle(
-                                        color: Color(0xffA2A5AA),
-                                        fontSize: ScreenUtil().setSp(29)
-                                    ),
-                                  ),
-                                  onPressed: (){},
-                                  padding: EdgeInsets.all(0),
-                                ),
-                                FlatButton(
-                                  textColor:Color(0xff0F82FF),
-                                  child: Text(
-                                    "发布",
-                                    style: TextStyle(
-                                        color: Color(0xffA2A5AA),
-                                        fontSize: ScreenUtil().setSp(29)
-                                    ),
-                                  ),
-                                  onPressed: (){},
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                                left: ScreenUtil().setWidth(30),
-                                right: ScreenUtil().setWidth(30)
-                            ),
-                            color: Colors.white,
-                            height: ScreenUtil().setHeight(400),
-                            child: TextField(
-                                autofocus: true,
-                                maxLines: null,
-                                decoration: InputDecoration(
-                                  hintText: "有何高见，说两句吧！",
-                                  isDense: true,
-                                )
-                            ),
-                          )
-                        ],
-                      )
-                  ),
+                child: BottomInput(
+                  confirm: (String text){
+                    Toast.show("我是评论内容:$text");
+                    NavigatorUtils.goBack(context);
+                  },
                 ),
               );
             },
