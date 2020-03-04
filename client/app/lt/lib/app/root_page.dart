@@ -33,7 +33,7 @@ class RootPage extends StatelessWidget {
           primaryColor: Colors.white,
           dividerColor: Color(0xFFEEEEEE),
           scaffoldBackgroundColor: Color(0xffF4F6FA),
-          fontFamily: "helveticaneuelight",
+          fontFamily: "pf",
           accentColor: Color(0xff4286F5)
         ),
         localizationsDelegates: const [

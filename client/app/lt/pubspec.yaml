@@ -82,6 +82,9 @@ flutter:
     - family: helveticaneuelight
       fonts:
         - asset: assets/font/helveticaneuelight.ttf
+    - family: pf
+      fonts:
+        - asset: assets/font/pf.ttf
 
   # fonts:
   #   - family: Schyler
