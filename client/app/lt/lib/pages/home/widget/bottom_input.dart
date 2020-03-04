@@ -5,9 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomInput extends StatefulWidget {
   final Function confirm;
+  final String hintText;
+  final String confirmText;
   BottomInput({
     Key key,
-    @required this.confirm
+    @required this.confirm,
+    this.confirmText:"发布",
+    this.hintText:"有何高见，说两句吧！"
   }):assert(confirm!=null),
     super(key:key);
 
@@ -55,7 +59,7 @@ class _BottomInputState extends State<BottomInput> {
                     FlatButton(
                       textColor:Color(0xff0F82FF),
                       child: Text(
-                        "发布",
+                        "${widget.confirmText}",
                         style: TextStyle(
                             color: Color(0xffA2A5AA),
                             fontSize: ScreenUtil().setSp(29)
@@ -86,7 +90,7 @@ class _BottomInputState extends State<BottomInput> {
                   autofocus: true,
                   maxLines: null,
                   decoration: InputDecoration(
-                      hintText: "有何高见，说两句吧！",
+                      hintText: "${widget.hintText}",
                       isDense: true,
                       hintStyle: TextStyle(
                         color: Color(0xff262626),
