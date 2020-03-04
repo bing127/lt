@@ -54,6 +54,7 @@ class _DetailPageState extends State<DetailPage> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.only(
+                  top: ScreenUtil().setHeight(20),
                   left: ScreenUtil().setWidth(30),
                   right: ScreenUtil().setWidth(30)
               ),
@@ -75,7 +76,7 @@ class _DetailPageState extends State<DetailPage> {
           ],
         ),
       ),
-      bottomSheet: _footerBtn(),
+      bottomNavigationBar: _footerBtn(),
     );
   }
 
@@ -162,6 +163,10 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _footerBtn(){
     return Container(
+      padding: EdgeInsets.only(
+        top: ScreenUtil().setHeight(10),
+        bottom: ScreenUtil().setHeight(10)
+      ),
       color: Colors.white,
       width: double.infinity,
       height: ScreenUtil().setHeight(90),
@@ -197,9 +202,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                 ),
-                onTap: (){
-
-                },
+                onTap: _showInputBox,
               ),
             ),
           ),
@@ -302,7 +305,7 @@ class _DetailPageState extends State<DetailPage> {
         padding: EdgeInsets.only(
           left: ScreenUtil().setWidth(30),
           right: ScreenUtil().setWidth(30),
-          bottom: ScreenUtil().setHeight(120)
+          bottom: ScreenUtil().setHeight(20)
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -348,7 +351,6 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
-
 
   Widget _commentItem(){
     return Container(
@@ -568,5 +570,83 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
+  void _showInputBox(){
+    showModalBottomSheet(
+        context: context,
+        useRootNavigator: true,
+        isScrollControlled: true,
+        isDismissible: true,
+        backgroundColor: Colors.transparent,
+        builder: (_){
+          return StatefulBuilder(
+            builder: (stateContext,state){
+              return GestureDetector(
+                // 关键代码
+                onVerticalDragUpdate: (e)=>false,
+                child: Scaffold(
+                  backgroundColor: Colors.black.withOpacity(.3),
+                  body: Container(
+                      color: Colors.transparent,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            height: ScreenUtil().setHeight(90),
+                            color: Colors.white,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                FlatButton(
+                                  child: Text(
+                                    "取消",
+                                    style: TextStyle(
+                                        color: Color(0xffA2A5AA),
+                                        fontSize: ScreenUtil().setSp(29)
+                                    ),
+                                  ),
+                                  onPressed: (){},
+                                  padding: EdgeInsets.all(0),
+                                ),
+                                FlatButton(
+                                  textColor:Color(0xff0F82FF),
+                                  child: Text(
+                                    "发布",
+                                    style: TextStyle(
+                                        color: Color(0xffA2A5AA),
+                                        fontSize: ScreenUtil().setSp(29)
+                                    ),
+                                  ),
+                                  onPressed: (){},
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(
+                                left: ScreenUtil().setWidth(30),
+                                right: ScreenUtil().setWidth(30)
+                            ),
+                            color: Colors.white,
+                            height: ScreenUtil().setHeight(400),
+                            child: TextField(
+                                autofocus: true,
+                                maxLines: null,
+                                decoration: InputDecoration(
+                                  hintText: "有何高见，说两句吧！",
+                                  isDense: true,
+                                )
+                            ),
+                          )
+                        ],
+                      )
+                  ),
+                ),
+              );
+            },
+          );
+        }
+    );
+  }
 
 }
