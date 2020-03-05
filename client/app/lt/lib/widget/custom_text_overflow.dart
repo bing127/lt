@@ -47,7 +47,7 @@ class _CustomTextOverflowState extends State<CustomTextOverflow> {
                 width: ScreenUtil().setWidth(100),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                    "${ !_isOverflow ? '收起' : '展开' }",
+                    "${ !_isOverflow ? '展开' : '收起' }",
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: ScreenUtil().setSp(28),

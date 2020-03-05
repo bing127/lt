@@ -1,5 +1,6 @@
 import 'package:app/common/utils/toast.dart';
 import 'package:app/routers/fluro_navigator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +54,9 @@ class _BottomInputState extends State<BottomInput> {
                             fontSize: ScreenUtil().setSp(29)
                         ),
                       ),
-                      onPressed: _close,
+                      onPressed: (){
+                        _close(context);
+                      },
                       padding: EdgeInsets.all(0),
                     ),
                     FlatButton(
@@ -61,15 +64,15 @@ class _BottomInputState extends State<BottomInput> {
                       child: Text(
                         "${widget.confirmText}",
                         style: TextStyle(
-                            color: Color(0xffA2A5AA),
+                            color: Color(0xff4286F5),
                             fontSize: ScreenUtil().setSp(29)
                         ),
                       ),
                       onPressed: (){
                         String text = _textEditingController.text;
-                        if(text.trim()!= null && text.trim().length<=0){
+                        if(text.trim()!= null && text.trim().length>0){
                           widget.confirm(text);
-                          _close();
+                          _close(context);
                         } else {
                           Toast.show("内容不能为空");
                         }
@@ -88,18 +91,21 @@ class _BottomInputState extends State<BottomInput> {
                 child: TextField(
                   controller: _textEditingController,
                   autofocus: true,
+                  autocorrect: true,
                   maxLines: null,
+                  maxLength: 200,
                   decoration: InputDecoration(
+                      counterText: "",
                       hintText: "${widget.hintText}",
                       isDense: true,
                       hintStyle: TextStyle(
-                        color: Color(0xff262626),
+                        color: Color(0xff939496),
                         fontSize: ScreenUtil().setSp(28),
                       )
                   ),
                   style: TextStyle(
                       fontSize: ScreenUtil().setSp(28),
-                      color: Color(0xff4286F5)
+                      color: Color(0xff262626)
                   ),
                 ),
               )
@@ -110,7 +116,7 @@ class _BottomInputState extends State<BottomInput> {
   }
 
 
-  _close(){
+  _close(BuildContext context){
     NavigatorUtils.goBack(context);
   }
 }

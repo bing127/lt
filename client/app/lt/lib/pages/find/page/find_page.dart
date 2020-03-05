@@ -154,7 +154,8 @@ class _FindPageState extends State<FindPage>
                         child: Text(
                             "点击量：26",
                             style: TextStyle(
-                              fontSize: ScreenUtil().setSp(22)
+                              fontSize: ScreenUtil().setSp(22),
+                              color:Colors.white
                             ),
                           textAlign: TextAlign.end,
                         ),

@@ -5,6 +5,7 @@ import 'package:app/routers/fluro_navigator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share/share.dart';
 
 class DetailPage extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _DetailPageState extends State<DetailPage> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: (){},
+            onPressed: _share,
             icon: Icon(
               IconFont.icon_share,
               color: Colors.black,
@@ -587,7 +588,6 @@ class _DetailPageState extends State<DetailPage> {
                 child: BottomInput(
                   confirm: (String text){
                     Toast.show("我是评论内容:$text");
-                    NavigatorUtils.goBack(context);
                   },
                 ),
               );
@@ -595,6 +595,10 @@ class _DetailPageState extends State<DetailPage> {
           );
         }
     );
+  }
+
+  void _share(){
+    Share.share("q12312",subject: "龙潭-专业IT技术社区：https://www.lt.com");
   }
 
 }
