@@ -93,7 +93,7 @@ paths:
       summary: 更改test
       tags:
       - test
-  /lt/api/v1/test/{roomId}:
+  /lt/api/v1/test/{id}:
     get:
       consumes:
       - application/json

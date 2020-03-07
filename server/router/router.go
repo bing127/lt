@@ -31,6 +31,7 @@ func InitRouter(r *gin.Engine) {
 	// swagger
 	r.GET(config.Admin.App.ApiPrefix+"/doc/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+
 	// 404路由
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusNotFound, utils.NotFound())

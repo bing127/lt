@@ -27,9 +27,6 @@ func main() {
 	srv := &http.Server{
 		Addr:    ":" + config.Admin.Server.Port,
 		Handler: r,
-		ReadTimeout:    config.Admin.Server.ReadTimeout * 1000,
-		WriteTimeout:   config.Admin.Server.WriteTimeout * 1000,
-		MaxHeaderBytes: 1 << 20,
 	}
 
 	go func() {

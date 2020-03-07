@@ -115,7 +115,7 @@
                 }
             }
         },
-        "/lt/api/v1/test/{roomId}": {
+        "/lt/api/v1/test/{id}": {
             "get": {
                 "description": "根据ID获取test",
                 "consumes": [

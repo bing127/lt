@@ -112,5 +112,5 @@ func LoadOrStoreConfig(filePath string, defaultData interface{}) error {
 }
 
 func GetCurrentTimeStamp() int64 {
-	return time.Now().Unix()
+	return time.Now().UnixNano() / 1e6
 }

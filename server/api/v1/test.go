@@ -22,12 +22,14 @@ import (
 // @Router /lt/api/v1/test [post]
 func CreateTest(c *gin.Context) {
 	request := &dto.CreateTestRequest{}
-	if err := c.ShouldBindJSON(request); err != nil {
+	err := c.ShouldBindJSON(request)
+	if err != nil {
 		c.JSON(http.StatusOK, utils.ResponseJson("缺少必要参数", nil, false, nil))
 		return
 	}
+	testId := utils.GetUUID()
 	test := &db.Test{
-		ID:         utils.GetUUID(),
+		ID:         testId,
 		Name:       request.Name,
 		CreateAt:   0,
 		CreateDate: utils.GetCurrentTimeStamp(),
@@ -35,12 +37,13 @@ func CreateTest(c *gin.Context) {
 		UpdateDate: utils.GetCurrentTimeStamp(),
 	}
 
-	err := service.Create(test)
+	err = service.Create(test)
 	if err != nil {
-		c.JSON(http.StatusOK, utils.ResponseJson("创建失败", nil, false, nil))
+		c.JSON(http.StatusOK, utils.ResponseJson(string(err.Error()), nil, false, nil))
 		return
 	}
-	c.JSON(http.StatusOK, utils.ResponseJson("创建成功", nil, true, nil))
+	c.JSON(http.StatusOK, utils.ResponseJson("创建成功", &test, true, nil))
+	return
 }
 
 // DeleteTest godoc
@@ -60,7 +63,13 @@ func DeleteTest(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, utils.ResponseJson("缺少必要参数id", nil, false, nil))
 		return
 	}
-
+	err := service.DeleteById(IdStr)
+	if err != nil {
+		c.JSON(http.StatusOK, utils.ResponseJson(err.Error(), nil, false, nil))
+		return
+	}
+	c.JSON(http.StatusOK, utils.ResponseJson("删除成功", nil, true, nil))
+	return
 }
 
 // UpdateTest godoc
@@ -88,7 +97,14 @@ func UpdateTest(c *gin.Context) {
 // @Success 200 { string } json
 // @Failure 400 { string } json
 // @Failure 500 { string } json
-// @Router /lt/api/v1/test/{roomId} [get]
+// @Router /lt/api/v1/test/{id} [get]
 func GetTest(c *gin.Context) {
-
+	testId := c.Param("id")
+	test,err := service.GetTestById(testId)
+	if err!=nil {
+		c.JSON(http.StatusOK, utils.ResponseJson(err.Error(), nil, false, nil))
+		return
+	}
+	c.JSON(http.StatusOK, utils.ResponseJson("查询成功", &test, true, nil))
+	return
 }

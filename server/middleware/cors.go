@@ -2,17 +2,17 @@ package middleware
 
 import (
 	"fmt"
-	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
+
 func CorsHandler() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		method := c.Request.Method               //请求方法
-		origin := c.Request.Header.Get("Origin") //请求头部
-		var headerKeys []string                  // 声明请求头keys
+		method := c.Request.Method
+		origin := c.Request.Header.Get("Origin")
+		var headerKeys []string
 		for k, _ := range c.Request.Header {
 			headerKeys = append(headerKeys, k)
 		}
@@ -36,8 +36,12 @@ func CorsHandler() gin.HandlerFunc {
 		}
 
 		//放行所有OPTIONS方法
+		//if method == "OPTIONS" {
+		//    c.JSON(http.StatusOK, "Options Request!")
+		//}
 		if method == "OPTIONS" {
-			c.JSON(http.StatusOK, "Options Request!")
+			c.AbortWithStatus(204)
+			return
 		}
 		// 处理请求
 		c.Next() //  处理请求
