@@ -165,7 +165,8 @@ class CustomCircle extends StatelessWidget {
       child: Text(
         "$title",
         style: TextStyle(
-            fontSize: ScreenUtil().setSp(23)
+            fontSize: ScreenUtil().setSp(23),
+            color: Colors.white
         ),
       ),
       padding: EdgeInsets.only(

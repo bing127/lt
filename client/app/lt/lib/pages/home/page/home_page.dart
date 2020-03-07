@@ -1,4 +1,5 @@
 import 'package:app/common/icon.dart';
+import 'package:app/pages/home/home_router.dart';
 import 'package:app/pages/home/tabView/FrontEnd_page.dart';
 import 'package:app/pages/home/tabView/ai_page.dart';
 import 'package:app/pages/home/tabView/android_page.dart';
@@ -55,7 +56,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       appBar: AppBar(
         title: CustomAppSearch(
           func: (){
-            _showAd();
+            NavigatorUtils.push(context, HomeRouter.searchPage);
           },
         ),
         elevation: 0.0,
@@ -116,6 +117,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   icon: Icon(
                     IconFont.icon_close,
                     size: ScreenUtil().setSp(70),
+                    color: Colors.white,
                   ),
                   onPressed: (){
                     NavigatorUtils.goBack(context);
