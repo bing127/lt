@@ -35,7 +35,7 @@ dependencies:
   cached_network_image: ^2.0.0
   sliding_up_panel: ^1.0.0
   sticky_headers: ^0.1.8+1
-  multi_image_picker: ^4.6.2
+  multi_image_picker: ^4.6.3
   flutter_html: ^0.11.1
   flutter_screenutil: ^1.0.2
   badges: ^1.1.1
@@ -44,6 +44,8 @@ dependencies:
   flutter_swiper: ^1.1.6
   keyboard_actions: ^3.2.0
   share: ^0.6.3+6
+  loading_more_list: ^1.0.5
+  extended_nested_scroll_view: ^0.4.0
 
 dev_dependencies:
   flutter_test:

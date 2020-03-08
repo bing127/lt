@@ -3,12 +3,12 @@ import 'package:app/routers/fluro_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SettingPage extends StatefulWidget {
+class EditPage extends StatefulWidget {
   @override
-  _SettingPageState createState() => _SettingPageState();
+  _EditPageState createState() => _EditPageState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+class _EditPageState extends State<EditPage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
@@ -27,7 +27,7 @@ class _SettingPageState extends State<SettingPage> {
             },
           ),
           title: Text(
-            "设置",
+            "编辑",
             style: TextStyle(
                 fontSize: ScreenUtil().setSp(36)
             ),

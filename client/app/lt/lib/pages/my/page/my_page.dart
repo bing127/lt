@@ -1,4 +1,6 @@
 import 'package:app/common/icon.dart';
+import 'package:app/pages/my/my_router.dart';
+import 'package:app/routers/fluro_navigator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,27 +35,33 @@ class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
             ),
             _cell(
                 IconFont.icon_remind_fill,
-                "消息中心"
+                "消息中心",
+                path: MyRouter.messagePage
             ),
             _cell(
               IconFont.icon_credit_level_fill,
-              "我的收藏"
+              "我的收藏",
+                path: MyRouter.collectPage
             ),
             _cell(
                 IconFont.icon_form_fill,
-                "浏览记录"
+                "浏览记录",
+                path: MyRouter.historyPage
             ),
             _cell(
                 IconFont.icon_email_fill,
-                "意见反馈"
+                "意见反馈",
+                path: MyRouter.ideaPage
             ),
             _cell(
                 IconFont.icon_email_fill,
-                "专栏作者"
+                "专栏作者",
+                path: MyRouter.columnPage
             ),
             _cell(
                 IconFont.icon_set1,
-                "设置"
+                "设置",
+                path: MyRouter.settingPage
             ),
           ],
         ),
@@ -80,52 +88,60 @@ class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: NetworkImage("https://user-gold-cdn.xitu.io/2019/2/28/169337feeaad7976?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1"),
-                  radius: ScreenUtil().setWidth(60),
-                ),
-                SizedBox(
-                  width: ScreenUtil().setWidth(20),
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+            Material(
+              color: Colors.white,
+              child: InkWell(
+                child: Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage("https://user-gold-cdn.xitu.io/2019/2/28/169337feeaad7976?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1"),
+                      radius: ScreenUtil().setWidth(60),
+                    ),
+                    SizedBox(
+                      width: ScreenUtil().setWidth(20),
+                    ),
+                    Expanded(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            "^你的酒窝没有酒",
-                            style: TextStyle(
-                                color: Color(0xff111111),
-                                fontSize: ScreenUtil().setSp(33)
-                            ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                "你的酒窝没有酒",
+                                style: TextStyle(
+                                    color: Color(0xff111111),
+                                    fontSize: ScreenUtil().setSp(33)
+                                ),
+                              ),
+                              SizedBox(
+                                height: ScreenUtil().setHeight(15),
+                              ),
+                              Text(
+                                "全栈开发工程师",
+                                style: TextStyle(
+                                    color: Color(0xffA8A8A8)
+                                ),
+                                softWrap: true,
+                              )
+                            ],
                           ),
-                          SizedBox(
-                            height: ScreenUtil().setHeight(15),
-                          ),
-                          Text(
-                            "全栈开发工程师",
-                            style: TextStyle(
-                                color: Color(0xffA8A8A8)
-                            ),
-                            softWrap: true,
+                          Icon(
+                            IconFont.icon_arrow_right,
+                            color: Color(0xffE7E7E7),
+                            size: ScreenUtil().setSp(43),
                           )
                         ],
                       ),
-                      Icon(
-                          IconFont.icon_arrow_right,
-                          color: Color(0xffE7E7E7),
-                          size: ScreenUtil().setSp(43),
-                      )
-                    ],
-                  ),
-                )
-              ],
+                    )
+                  ],
+                ),
+                onTap: (){
+                  NavigatorUtils.push(context, MyRouter.userPage);
+                },
+              ),
             ),
             SizedBox(
               height: ScreenUtil().setHeight(30),
@@ -203,7 +219,7 @@ class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  Widget _cell(IconData icon,String title){
+  Widget _cell(IconData icon,String title,{ String path:"" }){
     return Material(
       color: Colors.white,
       child: InkWell(
@@ -247,6 +263,12 @@ class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin {
             ],
           ),
         ),
+        onTap: (){
+          if(path== null){
+            return;
+          }
+          NavigatorUtils.push(context, path);
+        },
       ),
     );
   }
