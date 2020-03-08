@@ -32,12 +32,27 @@ func GetTestById(id string) (*db.Test,error) {
 }
 
 func DeleteById(id string) error {
-	test := &db.Test{}
-	err := db.GetInstance().Where("id = ?", id).Delete(test).Error
-	if err!= nil {
-		if gorm.IsRecordNotFoundError(err) {
-			return errors.New("没有符合条件的用户")
+
+	test,err := GetTestById(id)
+	if err != nil {
+		return errors.New(err.Error())
+	}
+	if test != nil {
+		err := db.GetInstance().Where("id = ?", id).Unscoped().Delete(test).Error
+		if err!= nil {
+			if gorm.IsRecordNotFoundError(err) {
+				return errors.New("没有符合条件的用户")
+			}
+			return errors.New(err.Error())
 		}
+		return nil
+	}
+	return nil
+}
+
+func UpdateTest(test *db.Test) error {
+	err := db.GetInstance().Model(&test).Updates(test).Error
+	if err != nil {
 		return errors.New(err.Error())
 	}
 	return nil

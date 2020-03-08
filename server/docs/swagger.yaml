@@ -1,5 +1,15 @@
 basePath: /
 definitions:
+  dto.CreateDictRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    required:
+    - description
+    - name
+    type: object
   dto.CreateTestRequest:
     properties:
       name:
@@ -7,7 +17,37 @@ definitions:
     required:
     - name
     type: object
+  dto.CreateValueRequest:
+    properties:
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  dto.PutDictRequest:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    required:
+    - description
+    - id
+    - name
+    type: object
   dto.PutTestRequest:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    required:
+    - id
+    - name
+    type: object
+  dto.PutValueRequest:
     properties:
       id:
         type: string
@@ -34,6 +74,122 @@ paths:
       summary: 获取平台版本
       tags:
       - 获取平台版本
+  /lt/api/v1/dict:
+    post:
+      consumes:
+      - application/json
+      description: 创建字典
+      parameters:
+      - description: 字典信息
+        in: body
+        name: CreateTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateDictRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 创建字典
+      tags:
+      - 字典
+    put:
+      consumes:
+      - application/json
+      description: 更新dict
+      parameters:
+      - description: dict信息
+        in: body
+        name: PutTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutDictRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 更新dict
+      tags:
+      - 字典
+  /lt/api/v1/dict/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 删除dict
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 删除dict
+      tags:
+      - 字典
+    get:
+      consumes:
+      - application/json
+      description: 根据ID获取dict
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 根据ID获取dict
+      tags:
+      - 字典
   /lt/api/v1/test:
     post:
       consumes:
@@ -67,7 +223,7 @@ paths:
     put:
       consumes:
       - application/json
-      description: 更改test
+      description: 更新test
       parameters:
       - description: test信息
         in: body
@@ -90,39 +246,10 @@ paths:
           description: Internal Server Error
           schema:
             type: ""
-      summary: 更改test
+      summary: 更新test
       tags:
       - test
   /lt/api/v1/test/{id}:
-    get:
-      consumes:
-      - application/json
-      description: 根据ID获取test
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: ""
-        "400":
-          description: Bad Request
-          schema:
-            type: ""
-        "500":
-          description: Internal Server Error
-          schema:
-            type: ""
-      summary: 根据ID获取test
-      tags:
-      - test
-  /lt/api/v1/test{id}:
     delete:
       consumes:
       - application/json
@@ -151,4 +278,148 @@ paths:
       summary: 删除test
       tags:
       - test
+    get:
+      consumes:
+      - application/json
+      description: 根据ID获取test
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 根据ID获取test
+      tags:
+      - test
+  /lt/api/v1/value:
+    post:
+      consumes:
+      - application/json
+      description: 创建字典值
+      parameters:
+      - description: 字典值信息
+        in: body
+        name: CreateTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateValueRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 创建字典值
+      tags:
+      - 字典
+    put:
+      consumes:
+      - application/json
+      description: 更新字典值
+      parameters:
+      - description: 字典值信息
+        in: body
+        name: PutTestRequest
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutValueRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 更新字典值
+      tags:
+      - 字典
+  /lt/api/v1/value/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 删除字典值
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 删除d字典值
+      tags:
+      - 字典
+    get:
+      consumes:
+      - application/json
+      description: 根据ID获取dict值
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: ""
+        "400":
+          description: Bad Request
+          schema:
+            type: ""
+        "500":
+          description: Internal Server Error
+          schema:
+            type: ""
+      summary: 根据ID获取dict值
+      tags:
+      - 字典
 swagger: "2.0"

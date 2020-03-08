@@ -25,7 +25,7 @@ func Open() {
 	openDb.SingularTable(true)
 	gormDb = openDb
 
-	autoMigrate(&Test{})
+	autoMigrate(&Test{},&Dict{},&Value{})
 }
 
 // Close 关闭数据库

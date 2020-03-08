@@ -25,9 +25,185 @@
                 }
             }
         },
+        "/lt/api/v1/dict": {
+            "put": {
+                "description": "更新dict",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "更新dict",
+                "parameters": [
+                    {
+                        "description": "dict信息",
+                        "name": "PutTestRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PutDictRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "创建字典",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "创建字典",
+                "parameters": [
+                    {
+                        "description": "字典信息",
+                        "name": "CreateTestRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateDictRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            }
+        },
+        "/lt/api/v1/dict/{id}": {
+            "get": {
+                "description": "根据ID获取dict",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "根据ID获取dict",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "删除dict",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "删除dict",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            }
+        },
         "/lt/api/v1/test": {
             "put": {
-                "description": "更改test",
+                "description": "更新test",
                 "consumes": [
                     "application/json"
                 ],
@@ -37,7 +213,7 @@
                 "tags": [
                     "test"
                 ],
-                "summary": "更改test",
+                "summary": "更新test",
                 "parameters": [
                     {
                         "description": "test信息",
@@ -157,9 +333,7 @@
                         }
                     }
                 }
-            }
-        },
-        "/lt/api/v1/test{id}": {
+            },
             "delete": {
                 "description": "删除test",
                 "consumes": [
@@ -202,9 +376,200 @@
                     }
                 }
             }
+        },
+        "/lt/api/v1/value": {
+            "put": {
+                "description": "更新字典值",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "更新字典值",
+                "parameters": [
+                    {
+                        "description": "字典值信息",
+                        "name": "PutTestRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PutValueRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "创建字典值",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "创建字典值",
+                "parameters": [
+                    {
+                        "description": "字典值信息",
+                        "name": "CreateTestRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateValueRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            }
+        },
+        "/lt/api/v1/value/{id}": {
+            "get": {
+                "description": "根据ID获取dict值",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "根据ID获取dict值",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "删除字典值",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "字典"
+                ],
+                "summary": "删除d字典值",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": ""
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": ""
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "dto.CreateDictRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.CreateTestRequest": {
             "type": "object",
             "required": [
@@ -216,7 +581,52 @@
                 }
             }
         },
+        "dto.CreateValueRequest": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PutDictRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "id",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.PutTestRequest": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PutValueRequest": {
             "type": "object",
             "required": [
                 "id",
