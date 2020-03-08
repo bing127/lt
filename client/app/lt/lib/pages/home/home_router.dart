@@ -12,7 +12,10 @@ class HomeRouter implements IRouterProvider{
   @override
   void initRouter(Router router) {
     router.define(homePage, handler: Handler(handlerFunc: (_, params) => HomePage()));
-    router.define(detailPage, handler: Handler(handlerFunc: (_, params) => DetailPage()));
+    router.define(detailPage, handler: Handler(handlerFunc: (_, params){
+      String title = params['title'].first;
+      return DetailPage(title:title);
+    }));
     router.define(searchPage, handler: Handler(handlerFunc: (_, params) => SearchPage()));
   }
 }

@@ -89,7 +89,8 @@ class CustomSwiper extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: ScreenUtil().setSp(26)
+                fontSize: ScreenUtil().setSp(26),
+                color: Colors.white
               ),
               overflow: TextOverflow.ellipsis,
             ),

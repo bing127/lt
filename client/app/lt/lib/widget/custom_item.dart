@@ -191,7 +191,7 @@ class CustomItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  thumbnail!= null ? Container(
                     child: PhysicalModel(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
@@ -208,14 +208,14 @@ class CustomItem extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: ScreenUtil().setWidth(30)
                     ),
-                  )
+                  ) : SizedBox.shrink()
                 ],
               )
             ],
           ),
         ),
         onTap: (){
-          NavigatorUtils.push(context, HomeRouter.detailPage);
+          NavigatorUtils.push(context, "${HomeRouter.detailPage}?title=${Uri.encodeQueryComponent(title)}");
         },
       ),
     );

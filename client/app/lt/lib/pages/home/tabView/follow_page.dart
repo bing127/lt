@@ -18,6 +18,17 @@ class _FollowPageState extends State<FollowPage>  with AutomaticKeepAliveClientM
         child: ListView(
           children: <Widget>[
             CustomItem(
+              authorAvatar: "https://user-gold-cdn.xitu.io/2017/10/25/6b80b38aeb280449941145f8f99ccaf4?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1",
+              authorName: "Turling_hu",
+              classify: "后端",
+              title: "深入理解Golang之context",
+              briefIntroduction: "这篇文章将介绍Golang并发编程中常用到一种编程模式：context。本文将从为什么需要context出发，深入了解context的实现原理，以及了解如何使用context。",
+              date: "1582430298000",
+              likeNum: 463,
+              collectNum: 89,
+              commentNum: 12,
+            ),
+            CustomItem(
               authorAvatar: "https://leancloud-gold-cdn.xitu.io/b93c7966891b287e55a0.jpeg?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1",
               authorName: "Tangpj",
               classify: "全栈",
