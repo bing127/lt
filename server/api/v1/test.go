@@ -56,7 +56,7 @@ func CreateTest(c *gin.Context) {
 // @Success 200 { string } json
 // @Failure 400 { string } json
 // @Failure 500 { string } json
-// @Router /lt/api/v1/test{id} [delete]
+// @Router /lt/api/v1/test/{id} [delete]
 func DeleteTest(c *gin.Context) {
 	IdStr := c.Param("id")
 	if len(IdStr) <= 0 {
@@ -73,8 +73,8 @@ func DeleteTest(c *gin.Context) {
 }
 
 // UpdateTest godoc
-// @Summary 更改test
-// @Description 更改test
+// @Summary 更新test
+// @Description 更新test
 // @Tags test
 // @Accept  json
 // @Produce json
@@ -84,7 +84,29 @@ func DeleteTest(c *gin.Context) {
 // @Failure 500 { string } json
 // @Router /lt/api/v1/test [put]
 func UpdateTest(c *gin.Context) {
-
+	request := &dto.PutTestRequest{}
+	err := c.ShouldBindJSON(request)
+	if err != nil {
+		c.JSON(http.StatusOK, utils.ResponseJson("缺少必要参数", nil, false, nil))
+		return
+	}
+	_,testIsExistErr := service.GetTestById(request.Id)
+	if testIsExistErr != nil {
+		c.JSON(http.StatusOK, utils.ResponseJson(testIsExistErr.Error(), nil, false, nil))
+		return
+	}
+	testDb := &db.Test{
+		ID:         request.Id,
+		Name:       request.Name,
+		UpdateDate: utils.GetCurrentTimeStamp(),
+	}
+	updateErr := service.UpdateTest(testDb)
+	if updateErr != nil {
+		c.JSON(http.StatusOK, utils.ResponseJson(updateErr.Error(), nil, false, nil))
+		return
+	}
+	c.JSON(http.StatusOK, utils.ResponseJson("更新成功", nil, true, nil))
+	return
 }
 
 // GetTest godoc
